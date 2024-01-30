@@ -48,7 +48,7 @@ def run():
             new_salary=110000.0  # Adicione um exemplo de novo salário
         )
         response = stub.UpdateEmployeeSalary(update_salary_request)
-        print('Updated employee salary. New salary: ' + str(response.updated_salary))
+        print('Updated employee salary: ' + str(response))
 
         # Calculate average salary
         response = stub.AverageSalary(EmployeeService_pb2.EmptyMessage())
