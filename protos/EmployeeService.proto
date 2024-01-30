@@ -19,7 +19,7 @@ service EmployeeService {
   // List all employees
   rpc ListAllEmployees (EmptyMessage) returns (EmployeeDataList) {}
   // Update an employee´s salary
-  rpc UpdateEmployeeSalary (EmployeeSalaryUpdate) returns (UpdateSalaryReply) {}
+  rpc UpdateEmployeeSalary (EmployeeSalaryUpdate) returns (StatusReply) {}
   // Calculate average salary
   rpc AverageSalary (EmptyMessage) returns (AverageSalaryReply) {}
   
@@ -51,7 +51,6 @@ message EmptyMessage{}
 message EmployeeDataList{
   repeated EmployeeData employee_data = 1;
 }
-
 
 message EmployeeSalaryUpdate {
   uint32 id = 1;
