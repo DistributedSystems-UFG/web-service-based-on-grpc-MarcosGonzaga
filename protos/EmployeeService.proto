@@ -13,11 +13,15 @@ service EmployeeService {
   // Get an employee´s data
   rpc GetEmployeeDataFromID (EmployeeID) returns (EmployeeData) {}
   // Update an employee´s title/position
-  rpc UpdateEmployeeTitle (EmployeeTitleUpdate) returns (StatusReply) {}
+  rpc UpdateEmployeeDetails (EmployeeDetailsUpdate) returns (StatusReply) {}
   // Delete an employee
   rpc DeleteEmployee (EmployeeID) returns (StatusReply) {}
   // List all employees
   rpc ListAllEmployees (EmptyMessage) returns (EmployeeDataList) {}
+  // Update an employee´s salary
+  rpc UpdateEmployeeSalary (EmployeeSalaryUpdate) returns (UpdateSalaryReply) {}
+  // Calculate average salary
+  rpc AverageSalary (EmptyMessage) returns (AverageSalaryReply) {}
   
 }
 
@@ -25,6 +29,7 @@ message EmployeeData {
   uint32 id = 1;
   string name = 2;
   string title = 3;
+  float salary = 4;
 }
 
 message StatusReply {
@@ -35,13 +40,24 @@ message EmployeeID {
   uint32 id = 1;
 }
 
-message EmployeeTitleUpdate {
+message EmployeeDetailsUpdate {
   uint32 id = 1;
-  string title = 2;
+  string name = 2;
+  string title = 3;
 }
 
 message EmptyMessage{}
 
 message EmployeeDataList{
   repeated EmployeeData employee_data = 1;
+}
+
+
+message EmployeeSalaryUpdate {
+  uint32 id = 1;
+  float new_salary = 2;
+}
+
+message AverageSalaryReply {
+  float average_salary = 1;
 }
