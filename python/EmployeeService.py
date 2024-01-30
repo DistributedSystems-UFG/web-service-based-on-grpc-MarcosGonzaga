@@ -85,7 +85,7 @@ class EmployeeServer(EmployeeService_pb2_grpc.EmployeeServiceServicer):
         usr = [emp for emp in empDB if emp['id'] == request.id]
         if usr:
             usr[0]['salary'] = request.new_salary
-            return eturn EmployeeService_pb2.StatusReply(status='OK')
+            return EmployeeService_pb2.StatusReply(status='OK')
         else:
             context.set_code(grpc.StatusCode.NOT_FOUND)
             context.set_details("Employee not found")
